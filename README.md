@@ -8,4 +8,4 @@ A simple solitaire game, where you have to remove all card from the pyramid with
 
 ## Demostration Image
 
-![Image of Solitaire](https://github.com/im-slow/PyramidSolitaire-js/blob/master/solitaire-screen.png)
+![Image of Solitaire](https://ibb.co/XD3pz2g)
