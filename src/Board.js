@@ -112,6 +112,17 @@ class Board {
         this.setNoBorder(this.getSideHand());
     }
 
+    setSideHandByCondition(){
+        this.sideHand.pop();
+        let length = this.sideHand.length;
+        if(length !== 0) {
+            console.log("carta alla fine", length)
+            this.setCardImage(this.sideHand[length-1].id, this.getSideHand());
+        } else {
+            this.setSideHandNone();
+        }
+    }
+
     cardEvent(card, div){
         // se coperta esci
         if (card.flip === true) return;
@@ -137,14 +148,7 @@ class Board {
         if (this.clickedCard === 0) {
             if (card.value === 10) {
                 if(row === 8) {
-                    this.sideHand.pop();
-                    let length = this.sideHand.length;
-                    if(this.sideHand[length-1] !== 0){
-                        //console.log("carta alla fine", this.sideHand[length-1])
-                        this.setCardImage(this.sideHand[length-1].id, this.getSideHand());
-                    } else {
-                        this.setSideHandNone();
-                    }
+                    this.setSideHandByCondition();
                 } else {
                     this.setHidden(div);
                     this.checkParent(rangeInf, rangeSup);
@@ -162,17 +166,31 @@ class Board {
 
             // la somma è 10
             if (this.clickedCard.value + card.value === 10) {
-                this.setHidden(div);
-                this.setHidden(this.clickedCard.getCard());
                 this.clickedCard.removed = true;
                 card.removed = true;
 
                 // ritorna la riga corrente grazie alla lista di numeri triangolari
-                let row = getRow(this.clickedCard.position);
-                let rangeInfFirstCard = getRangeByRow(row-1);
-                let rangeSupFirstCard = getRangeByRow(row);
+                let rowFirstCard = getRow(this.clickedCard.position);
+                let rangeInfFirstCard = getRangeByRow(rowFirstCard-1);
+                let rangeSupFirstCard = getRangeByRow(rowFirstCard);
+                if(row === 8) {
+                    console.log("2 card sulla piramide");
+                    this.setSideHandByCondition();
+                    this.setHidden(this.clickedCard.getCard());
+                    this.checkParent(rangeInf, rangeSup);
+                } else if (rowFirstCard === 8){
+                    console.log("1 card sulla piramide");
+                    this.setSideHandByCondition();
+                    this.setHidden(div);
+                    this.checkParent(rangeInfFirstCard, rangeSupFirstCard);
+                } else {
+                    this.setHidden(div);
+                    this.setHidden(this.clickedCard.getCard());
+                    this.checkParent(rangeInf, rangeSup);
+                    this.checkParent(rangeInfFirstCard, rangeSupFirstCard);
+                }
                 // vengono scoperte le carte sulla riga-1 a quella cliccata, se scoperte
-                this.checkParent(rangeInfFirstCard, rangeSupFirstCard);
+
                 this.checkParent(rangeInf, rangeSup);
 
                 // la somma non è 10
