@@ -1,7 +1,8 @@
 import {reverseString, setStyle} from "./utils";
+import { BACK_CARD, CARD_SIZE_X, CARD_SIZE_Y } from "./const";
 
 class Card {
-    constructor(id, value, imgUrl = "bg", flip = true, focus = false, position = 0, removed = false) {
+    constructor(id, value, flip = true, focus = false, position = 0, removed = false) {
         let card;
         var _this = this; // var utilizzata per esempio, è scorretto. Viene utilizzata per fare il bind della callback
 
@@ -20,7 +21,7 @@ class Card {
 
             this.setStyle(card, styles.card);
             //this.setStyle(card, {rotate: Math.floor(Math.random() * -7) + 5 +"deg"});
-            this.setStyle(card, {backgroundImage: "url('./src/images/"+imgUrl+".png')"});
+            this.setStyle(card, {backgroundImage: "url('./src/images/"+BACK_CARD+"')"});
 
             card.addEventListener('mouseover', (event) => {
                 if (event.target !== card || this.flip === true) return;
@@ -68,8 +69,8 @@ Card.prototype.setStyle = setStyle; // aggiunge funzionalità esterna all'oggett
 
 const styles = {
     card: {
-        height: '113px',
-        width: '65px',
+        width: ''+CARD_SIZE_X,
+        height: ''+CARD_SIZE_Y,
         display: 'inline-block', // permette all'elemento di allargarsi in base al contenuto
         marginBottom: '-50px',
         marginLeft:'5px',
@@ -82,6 +83,8 @@ const styles = {
         position: 'relative',
         verticalAlign: 'middle',
         textAlign: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
     },
     mouseover: {
         boxShadow: '0px 0px 2px 2px rgba(197,239,247,1)'

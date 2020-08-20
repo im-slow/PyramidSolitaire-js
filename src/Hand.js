@@ -1,5 +1,6 @@
 import {reverseString, setStyle} from "./utils";
 import {Card} from "./Card";
+import {BACK_CARD, CARD_SIZE_X, CARD_SIZE_Y} from "./const";
 
 class Hand {
     constructor(sidebar) {
@@ -44,7 +45,7 @@ class Hand {
         setStyle(this.deck, styles.card);
         setStyle(this.side, styles.card);
         //setStyle(side, {rotate: "4deg"});
-        setStyle(this.deck, {backgroundImage: "url('./src/images/bg.png')",});
+        setStyle(this.deck, {backgroundImage: "url('./src/images/"+ BACK_CARD + "')"});
         //setStyle(deck, {rotate: "-4deg"});
 
         this.sidebar.appendChild(this.side);
@@ -63,8 +64,8 @@ Hand.prototype.setStyle = setStyle();
 
 const styles = {
     card: {
-        height: '113px',
-        width: '65px',
+        width: ''+CARD_SIZE_X,
+        height: ''+CARD_SIZE_Y,
         display: 'inline-block', // permette all'elemento di allargarsi in base al contenuto
         marginBottom: '-50px',
         marginLeft: '5px',
@@ -77,6 +78,8 @@ const styles = {
         position: 'relative',
         verticalAlign: 'middle',
         textAlign: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
     },
     mouseover: {
         boxShadow: '0px 0px 2px 2px rgba(197,239,247,1)'

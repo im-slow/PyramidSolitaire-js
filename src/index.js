@@ -21,6 +21,17 @@ import {Board} from "./Board";
 
         context.appendChild(content);
 
+        //
+        // let button = document.createElement('div');
+        // setStyle(button, styles.button);
+        // button.innerText = "New Game";
+        //
+        // button.addEventListener("click", (event) => {
+        //     pyramid.newGame();
+        // });
+        //
+        // context.appendChild(button);
+
         let pyramid = new Board(content, sidebar);
         pyramid.newGame();
         pyramid.generateCard(content);
@@ -80,5 +91,19 @@ const styles = {
         position: 'relative',
         verticalAlign: 'middle',
         textAlign: 'center',
+    },
+    button: {
+        height: '20px',
+        width: '100px',
+        position: 'relative',
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+        borderRadius: '12px',
+        borderWidth: '2px',
+        borderStyle: 'solid',
+        borderColor: '#d1d1d1',
+        marginTop: '15px',
+        marginLeft: '15px',
+        backgroundColor: '#e7e7e7',
+        textAlign: 'center'
     },
 }

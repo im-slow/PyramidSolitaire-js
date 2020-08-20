@@ -1,6 +1,7 @@
 import {Hand} from "./Hand";
 import {getRangeByRow, getRow, reverseString, setStyle} from "./utils";
 import {Deck} from "./Deck";
+import { CARD_TYPE } from "./const";
 
 class Board {
     constructor(content, sidebar) {
@@ -102,7 +103,7 @@ class Board {
 
     setCardImage(id, div){
         let url = reverseString(id);
-        setStyle(div, { backgroundImage: "url('./src/images/"+url+".png')" });
+        setStyle(div, { backgroundImage: "url('./src/images/" + CARD_TYPE +"/"+url+".png')" });
         this.setNoBorder(this.getSideHand());
     }
 
@@ -232,7 +233,7 @@ class Board {
             if(sup[i].removed && sup[i+1].removed){ // se i genitori sono rimossi scopri la carta
                 inf[i].flip = false; // scopri carta
                 let url = reverseString(inf[i].id);
-                setStyle(inf[i].getCard(), {backgroundImage: "url('./src/images/"+url+".png')"});
+                setStyle(inf[i].getCard(), {backgroundImage: "url('./src/images/"+CARD_TYPE+"/"+url+".png')"});
             }
         }
     }
