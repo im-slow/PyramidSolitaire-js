@@ -114,10 +114,11 @@ class Board {
     }
 
     setSideHandByCondition(){
+        console.log("side prima del pop:", this.sideHand.length);
         this.sideHand.pop();
         let length = this.sideHand.length;
         if(length !== 0) {
-            console.log("carta alla fine", length)
+            console.log("side dopo del pop:", this.sideHand.length);
             this.setCardImage(this.sideHand[length-1].id, this.getSideHand());
         } else {
             this.setSideHandNone();
@@ -178,12 +179,12 @@ class Board {
                     console.log("2 card sulla piramide");
                     this.setSideHandByCondition();
                     this.setHidden(this.clickedCard.getCard());
-                    this.checkParent(rangeInf, rangeSup);
+                    this.checkParent(rangeInfFirstCard, rangeSupFirstCard);
                 } else if (rowFirstCard === 8){
                     console.log("1 card sulla piramide");
                     this.setSideHandByCondition();
                     this.setHidden(div);
-                    this.checkParent(rangeInfFirstCard, rangeSupFirstCard);
+                    this.checkParent(rangeInf, rangeSup);
                 } else {
                     this.setHidden(div);
                     this.setHidden(this.clickedCard.getCard());
@@ -192,7 +193,7 @@ class Board {
                 }
                 // vengono scoperte le carte sulla riga-1 a quella cliccata, se scoperte
 
-                this.checkParent(rangeInf, rangeSup);
+                // this.checkParent(rangeInf, rangeSup);
 
                 // la somma non è 10
             } else {
