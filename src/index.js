@@ -48,7 +48,7 @@ const styles = {
         right: 0,
         bottom: 0,
         minHeight: '360px',
-        minWidth: '740px',
+        minWidth: '600px',
     },
     sidebar: {
         position: 'absolute',
@@ -68,13 +68,15 @@ const styles = {
         left: 0,
         bottom: '20%',
         background: "url('./src/images/green_felt.jpg')",
-        padding: '15px',
+        padding: '3%',
         paddingTop: '3%',
+        paddingBottom: '',
         textAlign: 'center',
         // display: 'inline-block',
         // height: '100%',
         // verticalAlign: 'middle',
-        // marginRight: '-0.25em', /* Adjusts for spacing */
+        marginRight: '-0.25em', /* Adjusts for spacing */
+        marginLeft: '-0.25em', /* Adjusts for spacing */
     },
     card: {
         height: '113px',

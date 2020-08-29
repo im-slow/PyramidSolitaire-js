@@ -114,11 +114,9 @@ class Board {
     }
 
     setSideHandByCondition(){
-        console.log("side prima del pop:", this.sideHand.length);
         this.sideHand.pop();
         let length = this.sideHand.length;
         if(length !== 0) {
-            console.log("side dopo del pop:", this.sideHand.length);
             this.setCardImage(this.sideHand[length-1].id, this.getSideHand());
         } else {
             this.setSideHandNone();
@@ -143,19 +141,16 @@ class Board {
         let rangeInf = getRangeByRow(row-1); // ritorna il range di tutte le carte sulla riga superiore a quella della carta cliccata
         let rangeSup = getRangeByRow(row); // ritorna il ragne di tutte le carte presenti sulla riga della carta cliccata
 
-        console.log("sup", rangeSup);
-        console.log("inf", rangeInf);
-
         // prima carta selezionata
         if (this.clickedCard === 0) {
             if (card.value === 10) {
+                card.removed = true;
                 if(row === 8) {
                     this.setSideHandByCondition();
                 } else {
                     this.setHidden(div);
                     this.checkParent(rangeInf, rangeSup);
                 }
-                card.removed = true;
             } else {
                 // seleziona la carta
                 card.focus = true;
@@ -176,12 +171,10 @@ class Board {
                 let rangeInfFirstCard = getRangeByRow(rowFirstCard-1);
                 let rangeSupFirstCard = getRangeByRow(rowFirstCard);
                 if(row === 8) {
-                    console.log("2 card sulla piramide");
                     this.setSideHandByCondition();
                     this.setHidden(this.clickedCard.getCard());
                     this.checkParent(rangeInfFirstCard, rangeSupFirstCard);
                 } else if (rowFirstCard === 8){
-                    console.log("1 card sulla piramide");
                     this.setSideHandByCondition();
                     this.setHidden(div);
                     this.checkParent(rangeInf, rangeSup);
@@ -224,7 +217,6 @@ class Board {
         let inf = this.deck.filter(function(o) {
             return o.position <= rangeInf[1] && o.position >= rangeInf[0];
         });
-        console.log(inf.length);
         // range superiore di carte
         let sup = this.deck.filter(function(o) {
             return o.position <= rangeSup[1] && o.position >= rangeSup[0];
@@ -246,11 +238,12 @@ const styles = {
         borderColor: '#d1d1d1'
     },
     border: {
-        borderColor: '#19b5fe'
+        boxShadow: '0px 0px 2px 2px rgba(197,239,247,1)',
+        borderColor: '#19b5fe',
     },
     hidden: {
         visibility: 'hidden'
     }
 }
 
-export {Board}
+export { Board }

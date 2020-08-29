@@ -12,8 +12,6 @@ let getRow = function(num){
     let triangleNumber = [1, 3, 6, 10, 15, 21, 28, 40];
     for (var i = 0; i <= triangleNumber.length-1; i++) {
         if (num <= triangleNumber[i]) {
-            console.log("40 in giu: ", num);
-            console.log("riga:", i+1);
             return i+1;
         }
     }
