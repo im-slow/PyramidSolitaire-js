@@ -2,6 +2,7 @@ import {Hand} from "./Hand";
 import {getRangeByRow, getRow, reverseString, setStyle} from "./utils";
 import {Deck} from "./Deck";
 import { CARD_TYPE } from "./const";
+import {Splash} from "./Splash";
 
 class Board {
     constructor(content, sidebar) {
@@ -170,25 +171,26 @@ class Board {
                 let rowFirstCard = getRow(this.clickedCard.position);
                 let rangeInfFirstCard = getRangeByRow(rowFirstCard-1);
                 let rangeSupFirstCard = getRangeByRow(rowFirstCard);
+
                 if(row === 8) {
+                    // se la carta cliccata fa parte del mazzo
                     this.setSideHandByCondition();
                     this.setHidden(this.clickedCard.getCard());
                     this.checkParent(rangeInfFirstCard, rangeSupFirstCard);
-                } else if (rowFirstCard === 8){
+                } else if (rowFirstCard === 8) {
+                    // se la carta cliccata in precedenza fa parte del mazzo
                     this.setSideHandByCondition();
                     this.setHidden(div);
                     this.checkParent(rangeInf, rangeSup);
                 } else {
+                    // altrimenti sono entrambe della piramide
                     this.setHidden(div);
                     this.setHidden(this.clickedCard.getCard());
                     this.checkParent(rangeInf, rangeSup);
                     this.checkParent(rangeInfFirstCard, rangeSupFirstCard);
                 }
-                // vengono scoperte le carte sulla riga-1 a quella cliccata, se scoperte
 
-                // this.checkParent(rangeInf, rangeSup);
-
-                // la somma non è 10
+            // la somma non è 10
             } else {
                 // deseleziona carte
                 card.focus = false;
@@ -199,9 +201,13 @@ class Board {
             // la variabile che mantiene la carta selezionata per prima torna al valore di default
             this.clickedCard = 0;
         }
+        if(this.hand.length === 0){
+            // controlla se ci sono mosse disponibili
+            this.checkMove();
+        }
     }
 
-    //TODO bug si possono sommare le carte del mazzo
+    // vengono scoperte le carte sulla riga-1 a quella cliccata, se scoperte
     checkParent(rangeInf, rangeSup) {
         if(rangeSup[0]===0){
             this.sideHand.pop();
@@ -229,6 +235,39 @@ class Board {
                 setStyle(inf[i].getCard(), {backgroundImage: "url('./src/images/"+CARD_TYPE+"/"+url+".png')"});
             }
         }
+    }
+
+    checkMove(){
+        let flippedCard = this.deck.filter(function(o) {
+            return o.removed === false && o.flip === false;
+        });
+        if(flippedCard.length === 0) {
+            let splash = new Splash(this.content);
+            splash.setWin();
+            return
+        }
+        if(this.sideHand.length !== 0){
+            flippedCard.push(this.sideHand[this.sideHand.length-1]);
+        }
+
+
+        for (let i = 0; i<flippedCard.length; i++) {
+            if (flippedCard[i].value === 10) {
+                return
+            }
+        }
+
+        for (let i = 0; i<flippedCard.length; i++){
+            for (let j = 0; j<flippedCard.length; j++){
+                if(flippedCard[i].value+flippedCard[j].value===10) {
+                    if(i!==j) {
+                        return
+                    }
+                }
+            }
+        }
+        let splash = new Splash(this.content);
+        splash.setLose();
     }
 }
 
