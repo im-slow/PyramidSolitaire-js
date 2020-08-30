@@ -20,22 +20,26 @@ class Card {
             card.setAttribute('value', value);
 
             this.setStyle(card, styles.card);
-            //this.setStyle(card, {rotate: Math.floor(Math.random() * -7) + 5 +"deg"});
+            // this.setStyle(card, {rotate: Math.floor(Math.random() * -5) + 3 +"deg"});
             this.setStyle(card, {backgroundImage: "url('./src/images/"+BACK_CARD+"')"});
 
             card.addEventListener('mouseover', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
                 if (event.target !== card || this.flip === true) return;
                 this.setStyle(card, styles.mouseover);
             });
 
             card.addEventListener('mouseout', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
                 if (event.target !== card || this.focus === true || this.flip === true) return;
                 this.setStyle(card, styles.mouseout);
             });
 
             card.addEventListener('click', (event) => {
-                // this.detach(); funzione da chiamare
                 if(event.target !== card || card.flip===true) return;
+                event.preventDefault();
                 event.stopPropagation();
                 let e = new CustomEvent('clickedCard', {
                     bubbles: true,

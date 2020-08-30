@@ -17,6 +17,8 @@ class Splash {
     this.button.innerText = "New Game";
 
     this.button.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
             window.location.reload();
     });
 
@@ -24,12 +26,12 @@ class Splash {
     }
 
     setWin(){
-        //this.splash.innerText = "Hai Vinto!";
+        // immagine splash scrren di vittoria
         setStyle(this.splash, { backgroundImage: "url('./src/images/win.png')" });
     }
 
     setLose(){
-        //this.splash.innerText = "Hai Perso!";
+        // immagine splash scrren di sconfitta
         setStyle(this.splash, { backgroundImage: "url('./src/images/lose.png')" });
     }
 }
@@ -49,7 +51,8 @@ const styles = {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        transform: 'scale(0.8)'
     },
     button: {
         height: '20px',
@@ -63,8 +66,7 @@ const styles = {
         cursor: 'pointer',
         backgroundColor: '#e7e7e7',
         textAlign: 'center',
-        top: '50%',
-        marginTop: '10%',
+        top: '66%',
     },
 }
 

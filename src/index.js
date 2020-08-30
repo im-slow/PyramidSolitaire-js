@@ -1,9 +1,7 @@
-import { Card } from './Card';
-import { Deck } from './Deck';
 import './styles/main.scss';
 import { setStyle } from "./utils";
-import {SidebarManager} from "./Hand";
-import {Board} from "./Board";
+import { Board } from "./Board";
+import {MARGIN_TOP} from "./const";
 
 {
     let myApp = (function(){
@@ -36,7 +34,7 @@ const styles = {
         left: 0,
         right: 0,
         bottom: 0,
-        minHeight: '360px',
+        minHeight: '720px',
         minWidth: '600px',
     },
     sidebar: {
@@ -49,6 +47,9 @@ const styles = {
         padding: '15px',
         textAlign: 'center',
         vspace: 100,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
     },
     content: {
         position: 'absolute',
@@ -57,30 +58,13 @@ const styles = {
         left: 0,
         bottom: '20%',
         background: "url('./src/images/green_felt.jpg')",
-        padding: '3%',
-        paddingTop: '3%',
+        paddingTop: (3*MARGIN_TOP)+'%',
         paddingBottom: '',
         textAlign: 'center',
-        // display: 'inline-block',
-        // height: '100%',
-        // verticalAlign: 'middle',
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
         marginRight: '-0.25em', /* Adjusts for spacing */
         marginLeft: '-0.25em', /* Adjusts for spacing */
-    },
-    card: {
-        height: '113px',
-        width: '65px',
-        display: 'inline-block', // permette all'elemento di allargarsi in base al contenuto
-        marginBottom: '-50px',
-        marginLeft: '5px',
-        marginRight: '5px',
-        borderStyle: 'solid',
-        borderColor: '#d1d1d1',
-        borderWidth: '2px',
-        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-        borderRadius: '12px',
-        position: 'relative',
-        verticalAlign: 'middle',
-        textAlign: 'center',
     },
 }

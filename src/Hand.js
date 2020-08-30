@@ -10,6 +10,7 @@ class Hand {
         this.init();
 
         this.side.addEventListener('click', (event) => {
+            event.preventDefault();
             event.stopPropagation();
             let e = new Event('clickedSideDeck');
             this.side.dispatchEvent(e);
@@ -17,21 +18,27 @@ class Hand {
 
         this.side.addEventListener('mouseover', (event) => {
             if (event.target !== this.side || this.side.style.backgroundImage === '' || this.side.style.backgroundImage === 'none') return;
+            event.preventDefault();
+            event.stopPropagation();
             setStyle(this.side, styles.mouseover);
         });
 
         this.side.addEventListener('mouseout', (event) => {
             if (event.target !== this.side || this.side.style.backgroundImage === '' || this.side.style.backgroundImage === 'none') return;
+            event.preventDefault();
+            event.stopPropagation();
             setStyle(this.side, styles.mouseout);
         });
 
         this.deck.addEventListener('click', (event) => {
+            event.preventDefault();
             event.stopPropagation();
             let e = new Event('clickedCardDeck', {bubbles: true});
             this.deck.dispatchEvent(e);
         });
 
         this.side.addEventListener('click', (event) => {
+            event.preventDefault();
             event.stopPropagation();
             let e = new Event('clickedCardSide', {bubbles: true});
             this.side.dispatchEvent(e);

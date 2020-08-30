@@ -14,6 +14,7 @@ class Board {
         this.sidebar = sidebar;
         
         this.sidebar.addEventListener('clickedCardDeck', (event) => {
+            event.stopPropagation();
             if(this.hand.length===0) return;
             this.sideHand.push(this.hand.pop());
             let length = this.sideHand.length;
@@ -25,13 +26,15 @@ class Board {
         });
 
         this.sidebar.addEventListener('clickedCardSide', (event) => {
+            event.stopPropagation();
             let length = this.sideHand.length;
             if(length === 0) return;
             this.cardEvent(this.sideHand[length-1], this.getSideHand());
         });
 
         this.content.addEventListener('clickedCard', (event) => {
-           this.cardEvent(event.detail, event.detail.getCard());
+            event.stopPropagation();
+            this.cardEvent(event.detail, event.detail.getCard());
         });
     }
 
