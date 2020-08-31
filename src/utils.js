@@ -21,6 +21,7 @@ let getRangeByRow = function(row){
     let triangleNumber = [1, 3, 6, 10, 15, 21, 28, 40];
     switch (row) {
         case 8: return [0, 0];
+        case 1: return [1, 1];
         default:
             let rangeStart = triangleNumber[row-1];
             let rangeEnd = triangleNumber[row-2]+1;

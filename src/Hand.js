@@ -1,6 +1,5 @@
-import {reverseString, setStyle} from "./utils";
-import {Card} from "./Card";
-import {BACK_CARD, CARD_SIZE_X, CARD_SIZE_Y} from "./const";
+import { setStyle } from "./utils";
+import { BACK_CARD, CARD_SIZE_X, CARD_SIZE_Y } from "./const";
 
 class Hand {
     constructor(sidebar) {

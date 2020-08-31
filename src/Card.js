@@ -1,4 +1,4 @@
-import {reverseString, setStyle} from "./utils";
+import { setStyle } from "./utils";
 import { BACK_CARD, CARD_SIZE_X, CARD_SIZE_Y } from "./const";
 
 class Card {
