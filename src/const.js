@@ -5,11 +5,11 @@ let scale = screen.width<=768?1.1:1;
 let MARGIN_TOP = screen.width<=768?10:1;
 let CARD_SIZE_X = '';
 switch(CARD_TYPE){
-    case "toscane": CARD_SIZE_X = '72px';
+    case "toscane": CARD_SIZE_X = (72*scale)+'px';
         break;
     case "napoletane": CARD_SIZE_X = (65*scale)+'px';
         break;
-    case "piacentine": CARD_SIZE_X = '58px';
+    case "piacentine": CARD_SIZE_X = (58*scale)+'px';
         break;
 }
 
