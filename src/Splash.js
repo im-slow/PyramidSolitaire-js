@@ -13,8 +13,8 @@ class Splash {
         setStyle(this.splash, styles.splash);
         this.content.parentNode.append(this.splash);
 
-    setStyle(this.button, styles.button);
-    this.button.innerText = "New Game";
+    setStyle(this.button, styles.alternative_button);
+    this.button.innerText = "NEW GAME";
 
     this.button.addEventListener("click", (event) => {
             event.preventDefault();
@@ -68,6 +68,24 @@ const styles = {
         textAlign: 'center',
         top: '66%',
     },
+    alternative_button: {
+        height: '30px',
+        width: '140px',
+        position: 'absolute',
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+        borderRadius: '8px',
+        borderWidth: '1px',
+        borderStyle: 'inset',
+        borderColor: '#f0d000',
+        cursor: 'pointer',
+        backgroundColor: '#721b1b',
+        textAlign: 'center',
+        top: '60%',
+        fontSize: 'x-large',
+        fontFamily: 'lucida console',
+        color: '#ffcc32',
+        marginTop: '2.5em'
+    }
 }
 
 export { Splash };

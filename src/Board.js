@@ -19,9 +19,11 @@ class Board {
             this.sideHand.push(this.hand.pop());
             let length = this.sideHand.length;
             if(length === 0) return;
-            this.setCardImage(this.sideHand[length-1].id, this.getSideHand())
+            this.setCardImage(this.sideHand[length-1].id, this.getSideHand());
             if (this.hand.length === 0) {
                 setStyle(this.getHand(), {backgroundImage: "none"});
+                // controlla se ci sono mosse disponibili
+                this.checkMove();
             }
         });
 
