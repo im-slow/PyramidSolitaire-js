@@ -49,7 +49,7 @@ const styles = {
         vspace: 100,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
+        backgroundPositionX: "center",
     },
     content: {
         position: 'absolute',
