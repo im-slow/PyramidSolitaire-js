@@ -15,8 +15,8 @@ A simple solitaire, in which you have to complete the pyramid by removing all it
 
 ## Demostration Image
 
-![Gameplay](https://ibb.co/mSQ252j)
+![Gameplay](https://i.ibb.co/ZNyFzFj/solitaire1.png)
 
-![Lose](https://ibb.co/1s4LhJC)
+![Lose](https://i.ibb.co/s5X2kJT/solitaire2.png)
 
-![Phone view](https://ibb.co/nnCBP11)
+![Phone view](https://i.ibb.co/61B8Xtt/solitaire3.png)
