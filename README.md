@@ -1,7 +1,8 @@
 # Pyramid Solitaire
 
 A solitaire game based on javascript
-[link to game hosted on Firebase!](https://solitaire104.firebaseapp.com/)
+
+[Play the Game hosted on Firebase!](https://solitaire104.firebaseapp.com/)
 
 ## Rules
 
@@ -15,8 +16,11 @@ A simple solitaire, in which you have to complete the pyramid by removing all it
 
 ## Demostration Image
 
+### Gameplay
 ![Gameplay](https://i.ibb.co/ZNyFzFj/solitaire1.png)
 
+### Lose
 ![Lose](https://i.ibb.co/s5X2kJT/solitaire2.png)
 
+### Phone view
 ![Phone view](https://i.ibb.co/61B8Xtt/solitaire3.png)
