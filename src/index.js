@@ -1,7 +1,7 @@
 import './styles/main.scss';
 import { setStyle } from "./utils";
 import { Board } from "./Board";
-import {MARGIN_TOP} from "./const";
+import { MARGIN_TOP } from "./const";
 
 {
     let myApp = (function(){

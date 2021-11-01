@@ -1,8 +1,8 @@
-import {Hand} from "./Hand";
-import {getRangeByRow, getRow, reverseString, setStyle} from "./utils";
-import {Deck} from "./Deck";
+import { Hand } from "./Hand";
+import { getRangeByRow, getRow, reverseString, setStyle } from "./utils";
+import { Deck } from "./Deck";
 import { CARD_TYPE } from "./const";
-import {Splash} from "./Splash";
+import { Splash } from "./Splash";
 
 class Board {
     constructor(content, sidebar) {
@@ -42,7 +42,8 @@ class Board {
 
     newGame(){
         let fullDeck = new Deck(this.content);
-        let fullHand = new Hand(this.sidebar);
+        // let fullHand =
+        new Hand(this.sidebar);
         fullDeck.newDeck();
         fullDeck.shuffle();
 
@@ -68,7 +69,7 @@ class Board {
             this.appendToPyramid(tempCard);
             this.setCardImage(tempCard.id, tempCard.getCard());
         }
-        for(var n=0; n<12; n++){
+        for( var n=0; n<12; n++ ){
             let tempCard = this.hand[n];
             if(n===0){
                 tempCard.flip = true;

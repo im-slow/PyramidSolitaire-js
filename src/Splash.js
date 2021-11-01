@@ -1,5 +1,4 @@
-import {setStyle} from "./utils";
-import {CARD_TYPE} from "./const";
+import { setStyle } from "./utils";
 
 class Splash {
     constructor(content) {
@@ -26,12 +25,12 @@ class Splash {
     }
 
     setWin(){
-        // immagine splash scrren di vittoria
+        // immagine splash screen di vittoria
         setStyle(this.splash, { backgroundImage: "url('./src/images/win.png')" });
     }
 
     setLose(){
-        // immagine splash scrren di sconfitta
+        // immagine splash screen di sconfitta
         setStyle(this.splash, { backgroundImage: "url('./src/images/lose.png')" });
     }
 }

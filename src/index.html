@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RFPFK6RPL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9RFPFK6RPL');
+    </script>
+
+    <!-- Service Worker -->
+    <script>
+      (function () {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./service-worker.js', {scope: '/'})
+          .then(() =>
+              console.log('Service Worker registered successfully.'))
+          .catch(error =>
+              console.log('Service Worker registration failed:', error));
+        }
+      })();
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.6, user-scalable=no">
+    <meta name="author" content="Andrea Amicosante">
+    <meta name="description" content="Pyramid Solitaire, Javascript game (more info: https://github.com/im-slow/PyramidSolitaire-js)">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="src/favicon.ico" rel="shortcut icon"/>
     <title>Solitaire</title>
 </head>
 <body>
     <div id="root"></div>
 </body>
+
 </html>
