@@ -1,6 +1,9 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const PUBLIC_PATH = 'https://solitaire104.web.app/';
 
 module.exports = {
     module: {
@@ -69,5 +72,30 @@ module.exports = {
                 { from: 'src/images', to: 'src/images'},
             ],
         }),
+        new WebpackPwaManifest({
+            name: 'Solitaire104',
+            short_name: 'Solitaire104',
+            description: 'Solitaire104 by im_sloww',
+            background_color: '#286e26',
+            theme_color: '#286e26',
+            'theme-color': '#286e26',
+            start_url: '/',
+            icons: [
+                {
+                    src: "./src/images/favicon.ico",
+                    sizes: [96, 128, 192, 256, 384, 512],
+                }
+            ]
+        }),
+        new SWPrecacheWebpackPlugin(
+            {
+                cacheId: "solitaire104-cache",//'my-domain-cache-id',
+                dontCacheBustUrlsMatching: /\.\w{8}\./,
+                filename: 'service-worker.js',
+                minify: true,
+                navigateFallback: PUBLIC_PATH, //+ 'index.html',
+                staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
+            }
+        ),
     ]
 }
